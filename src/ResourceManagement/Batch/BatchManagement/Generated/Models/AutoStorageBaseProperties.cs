@@ -27,37 +27,29 @@ namespace Microsoft.Azure.Management.Batch.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Parameters supplied to the Update operation.
+    /// Gets or sets properties relating to auto storage.
     /// </summary>
-    public partial class BatchAccountUpdateParameters
+    public partial class AutoStorageBaseProperties
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the AutoStorageBaseProperties class.
         /// </summary>
-        public BatchAccountUpdateParameters() { }
+        public AutoStorageBaseProperties() { }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the AutoStorageBaseProperties class.
         /// </summary>
-        public BatchAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), AccountBaseProperties properties = default(AccountBaseProperties))
+        public AutoStorageBaseProperties(string storageAccountId = default(string))
         {
-            Tags = tags;
-            Properties = properties;
+            StorageAccountId = storageAccountId;
         }
 
         /// <summary>
-        /// The user specified tags associated with the account.
+        /// Gets or sets the resource id of the storage account to be used for
+        /// auto storage.
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// The properties of the account.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public AccountBaseProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "storageAccountId")]
+        public string StorageAccountId { get; set; }
 
     }
 }

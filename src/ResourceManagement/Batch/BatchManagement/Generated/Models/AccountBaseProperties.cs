@@ -27,37 +27,28 @@ namespace Microsoft.Azure.Management.Batch.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Parameters supplied to the Update operation.
+    /// The properties of a Batch account.
     /// </summary>
-    public partial class BatchAccountUpdateParameters
+    public partial class AccountBaseProperties
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the AccountBaseProperties class.
         /// </summary>
-        public BatchAccountUpdateParameters() { }
+        public AccountBaseProperties() { }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the AccountBaseProperties class.
         /// </summary>
-        public BatchAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), AccountBaseProperties properties = default(AccountBaseProperties))
+        public AccountBaseProperties(AutoStorageBaseProperties autoStorage = default(AutoStorageBaseProperties))
         {
-            Tags = tags;
-            Properties = properties;
+            AutoStorage = autoStorage;
         }
 
         /// <summary>
-        /// The user specified tags associated with the account.
+        /// Gets or sets properties relating to auto storage.
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// The properties of the account.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public AccountBaseProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "autoStorage")]
+        public AutoStorageBaseProperties AutoStorage { get; set; }
 
     }
 }

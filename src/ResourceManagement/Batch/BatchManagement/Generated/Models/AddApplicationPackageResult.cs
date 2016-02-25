@@ -27,49 +27,52 @@ namespace Microsoft.Azure.Management.Batch.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Specialized action for Batch resource provider.
+    /// Response to an ApplicationOperations.AddApplicationPackage request.
     /// </summary>
-    public partial class AccountActions
+    public partial class AddApplicationPackageResult
     {
         /// <summary>
-        /// Initializes a new instance of the AccountActions class.
+        /// Initializes a new instance of the AddApplicationPackageResult
+        /// class.
         /// </summary>
-        public AccountActions() { }
+        public AddApplicationPackageResult() { }
 
         /// <summary>
-        /// Initializes a new instance of the AccountActions class.
+        /// Initializes a new instance of the AddApplicationPackageResult
+        /// class.
         /// </summary>
-        public AccountActions(string action = default(string), string friendlyName = default(string), string friendlyTarget = default(string), string friendlyDescription = default(string))
+        public AddApplicationPackageResult(string id = default(string), string version = default(string), string storageUrl = default(string), DateTime? storageUrlExpiry = default(DateTime?))
         {
-            Action = action;
-            FriendlyName = friendlyName;
-            FriendlyTarget = friendlyTarget;
-            FriendlyDescription = friendlyDescription;
+            Id = id;
+            Version = version;
+            StorageUrl = storageUrl;
+            StorageUrlExpiry = storageUrlExpiry;
         }
 
         /// <summary>
-        /// The action name.
+        /// Gets or sets the id of the application.
         /// </summary>
-        [JsonProperty(PropertyName = "action")]
-        public string Action { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
         /// <summary>
-        /// The friendly name of the action.
+        /// Gets or sets the version of the application.
         /// </summary>
-        [JsonProperty(PropertyName = "friendlyName")]
-        public string FriendlyName { get; set; }
+        [JsonProperty(PropertyName = "version")]
+        public string Version { get; set; }
 
         /// <summary>
-        /// The target of the action.
+        /// Gets or sets the URL to which the application package binary file
+        /// should be uploaded.
         /// </summary>
-        [JsonProperty(PropertyName = "friendlyTarget")]
-        public string FriendlyTarget { get; set; }
+        [JsonProperty(PropertyName = "storageUrl")]
+        public string StorageUrl { get; set; }
 
         /// <summary>
-        /// The description of the action.
+        /// Gets or sets the UTC time at which the storage URL will expire.
         /// </summary>
-        [JsonProperty(PropertyName = "friendlyDescription")]
-        public string FriendlyDescription { get; set; }
+        [JsonProperty(PropertyName = "storageUrlExpiry")]
+        public DateTime? StorageUrlExpiry { get; set; }
 
     }
 }

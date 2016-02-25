@@ -27,37 +27,36 @@ namespace Microsoft.Azure.Management.Batch.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Parameters supplied to the Update operation.
+    /// Parameters for an ApplicationOperations.AddApplication request.
     /// </summary>
-    public partial class BatchAccountUpdateParameters
+    public partial class AddApplicationParameters
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the AddApplicationParameters class.
         /// </summary>
-        public BatchAccountUpdateParameters() { }
+        public AddApplicationParameters() { }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the AddApplicationParameters class.
         /// </summary>
-        public BatchAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), AccountBaseProperties properties = default(AccountBaseProperties))
+        public AddApplicationParameters(bool? allowUpdates = default(bool?), string displayName = default(string))
         {
-            Tags = tags;
-            Properties = properties;
+            AllowUpdates = allowUpdates;
+            DisplayName = displayName;
         }
 
         /// <summary>
-        /// The user specified tags associated with the account.
+        /// Gets or sets whether packages within the application may be
+        /// overwritten using the same version string.
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        [JsonProperty(PropertyName = "allowUpdates")]
+        public bool? AllowUpdates { get; set; }
 
         /// <summary>
-        /// The properties of the account.
+        /// Gets or sets the display name for the application.
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public AccountBaseProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "displayName")]
+        public string DisplayName { get; set; }
 
     }
 }

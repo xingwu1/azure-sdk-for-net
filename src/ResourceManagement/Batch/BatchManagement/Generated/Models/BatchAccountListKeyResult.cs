@@ -27,37 +27,35 @@ namespace Microsoft.Azure.Management.Batch.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Parameters supplied to the Update operation.
+    /// Values returned by the GetKeys operation.
     /// </summary>
-    public partial class BatchAccountUpdateParameters
+    public partial class BatchAccountListKeyResult
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the BatchAccountListKeyResult class.
         /// </summary>
-        public BatchAccountUpdateParameters() { }
+        public BatchAccountListKeyResult() { }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the BatchAccountListKeyResult class.
         /// </summary>
-        public BatchAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), AccountBaseProperties properties = default(AccountBaseProperties))
+        public BatchAccountListKeyResult(string primary = default(string), string secondary = default(string))
         {
-            Tags = tags;
-            Properties = properties;
+            Primary = primary;
+            Secondary = secondary;
         }
 
         /// <summary>
-        /// The user specified tags associated with the account.
+        /// The primary key associated with the account.
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        [JsonProperty(PropertyName = "primary")]
+        public string Primary { get; set; }
 
         /// <summary>
-        /// The properties of the account.
+        /// The secondary key associated with the account.
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public AccountBaseProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "secondary")]
+        public string Secondary { get; set; }
 
     }
 }

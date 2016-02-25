@@ -27,37 +27,38 @@ namespace Microsoft.Azure.Management.Batch.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Parameters supplied to the Update operation.
+    /// Contains information about the auto storage associated with a Batch
+    /// account.
     /// </summary>
-    public partial class BatchAccountUpdateParameters
+    public partial class AutoStorageProperties
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the AutoStorageProperties class.
         /// </summary>
-        public BatchAccountUpdateParameters() { }
+        public AutoStorageProperties() { }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
-        /// class.
+        /// Initializes a new instance of the AutoStorageProperties class.
         /// </summary>
-        public BatchAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), AccountBaseProperties properties = default(AccountBaseProperties))
+        public AutoStorageProperties(string storageAccountId = default(string), DateTime? lastKeySync = default(DateTime?))
         {
-            Tags = tags;
-            Properties = properties;
+            StorageAccountId = storageAccountId;
+            LastKeySync = lastKeySync;
         }
 
         /// <summary>
-        /// The user specified tags associated with the account.
+        /// Gets or sets the resource id of the storage account to be used for
+        /// auto storage.
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        [JsonProperty(PropertyName = "storageAccountId")]
+        public string StorageAccountId { get; set; }
 
         /// <summary>
-        /// The properties of the account.
+        /// Gets or sets the UTC time at which storage keys were last synced
+        /// to the Batch account.
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public AccountBaseProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "lastKeySync")]
+        public DateTime? LastKeySync { get; set; }
 
     }
 }

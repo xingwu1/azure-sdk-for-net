@@ -27,37 +27,31 @@ namespace Microsoft.Azure.Management.Batch.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Parameters supplied to the Update operation.
+    /// Values returned by the Get Subscription Quotas operation.
     /// </summary>
-    public partial class BatchAccountUpdateParameters
+    public partial class SubscriptionQuotasGetResult
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
+        /// Initializes a new instance of the SubscriptionQuotasGetResult
         /// class.
         /// </summary>
-        public BatchAccountUpdateParameters() { }
+        public SubscriptionQuotasGetResult() { }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountUpdateParameters
+        /// Initializes a new instance of the SubscriptionQuotasGetResult
         /// class.
         /// </summary>
-        public BatchAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), AccountBaseProperties properties = default(AccountBaseProperties))
+        public SubscriptionQuotasGetResult(int? accountQuota = default(int?))
         {
-            Tags = tags;
-            Properties = properties;
+            AccountQuota = accountQuota;
         }
 
         /// <summary>
-        /// The user specified tags associated with the account.
+        /// The number of accounts the subscription is allowed to create in
+        /// the Batch Service at the specified region.
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// The properties of the account.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public AccountBaseProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "accountQuota")]
+        public int? AccountQuota { get; set; }
 
     }
 }

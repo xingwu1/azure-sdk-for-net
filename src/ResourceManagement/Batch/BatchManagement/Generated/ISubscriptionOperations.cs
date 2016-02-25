@@ -16,42 +16,35 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace Microsoft.Azure.Management.Batch.Models
+namespace Microsoft.Azure.Management.Batch
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Net.Http;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Microsoft.Rest.Azure;
+    using Models;
 
     /// <summary>
-    /// Parameters supplied to the RegenerateKey operation.
+    /// SubscriptionOperations operations.
     /// </summary>
-    public partial class BatchAccountRegenerateKeyParameters
+    public partial interface ISubscriptionOperations
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// BatchAccountRegenerateKeyParameters class.
+        /// The Get Subscription Quotas operation returns the quotas of the
+        /// subscription in the Batch service.
         /// </summary>
-        public BatchAccountRegenerateKeyParameters() { }
-
-        /// <summary>
-        /// Initializes a new instance of the
-        /// BatchAccountRegenerateKeyParameters class.
-        /// </summary>
-        public BatchAccountRegenerateKeyParameters(AccountKeyType? keyName = default(AccountKeyType?))
-        {
-            KeyName = keyName;
-        }
-
-        /// <summary>
-        /// The type of account key to regenerate. Possible values include:
-        /// 'Primary', 'Secondary'
-        /// </summary>
-        [JsonProperty(PropertyName = "keyName")]
-        public AccountKeyType? KeyName { get; set; }
-
+        /// <param name='locationName'>
+        /// The region of the quotas belongs.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<SubscriptionQuotasGetResult>> GetSubscriptionQuotasWithHttpMessagesAsync(string locationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
